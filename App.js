@@ -4,7 +4,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 const router = require('./routers/router');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 app.use(express.json());
@@ -19,12 +18,7 @@ app.get('/', (req, res) => {
   return res.send('Hello World!');
 });
 
-// static files accessible
-app.use(express.static(path.join(__dirname, './client/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
+// Corsplocy
 
 const PORT = process.env.PORT || 8080;
 
